@@ -1,0 +1,231 @@
+<!--This bot informs the user about the Syros Port schedules (arrivals & departures) -->
+
+<aiml>
+<!--Salutation-->
+<category>
+<pattern>HI</pattern>
+<template>
+ Hello there! I am the PortBot of Syros! What would you like to know about the port schedules?
+</template>
+</category>
+
+<!---Explains what it can do-->
+<category>
+<pattern>HELP</pattern>
+<template>
+I can give you the arrivals to and the departures from the Syros Port for each day. 
+I can also tell you which ship leaves or arrives on specific hours,
+when does a ship leaves or arrives, which ship goes on a specific destination, and the destination or the starting point of a ship.
+Please make sure to specify the day!
+</template>
+</category>
+<category>
+<pattern>WHAT CAN YOU TELL ME</pattern>
+<template>
+<srai>HELP</srai>
+</template>
+</category>
+<category>
+<pattern>WHAT CAN YOU DO</pattern>
+<template>
+<srai>HELP</srai>
+</template>
+</category>
+<category>
+<pattern>WHAT CAN I ASK YOU</pattern>
+<template>
+<srai>HELP</srai>
+</template>
+</category>
+
+<!--Introduces himself-->
+<category>
+<pattern>WHO ARE YOU</pattern>
+<template>I am the PortBot of the Syros port! You can ask me anything you want about the port schedules!!</template>
+</category>
+
+<!--Default answer-->
+<category>
+<pattern>*</pattern>
+<template>
+ <random>
+   <li>Excuse me, I didn't understand you.</li>
+   <li>Could you please repeat?</li>
+   <li>Pardon?</li>
+</random>
+</template>
+</category>
+
+
+<!--No1. Departures for each day (alternative questions)-->
+<category>
+<pattern>WHICH SHIPS LEAVE ON *</pattern>
+<template><srai>DEPARTURES ON <star/></srai></template>
+</category>
+<category>
+<pattern>WHICH SHIPS DEPART ON *</pattern>
+<template><srai>DEPARTURES ON <star/></srai></template>
+</category>
+<category>
+<pattern>ON * WHICH SHIPS DEPART </pattern>
+<template><srai>DEPARTURES ON <star/></srai></template>
+</category>
+<category>
+<pattern>ON * WHICH SHIPS LEAVE </pattern>
+<template><srai>DEPARTURES ON <star/></srai></template>
+</category>
+
+<!--No1. Arrivals for each day (alternative questions)-->
+<category>
+<pattern>WHICH SHIPS ARRIVE ON *</pattern>
+<template><srai>ARRIVALS ON <star/></srai></template>
+</category>
+<category>
+<pattern>WHICH SHIPS DROP ANCHOR ON *</pattern>
+<template><srai>ARRIVALS ON <star/></srai></template>
+</category>
+<category>
+<pattern>ON * WHICH SHIPS ARRIVE </pattern>
+<template><srai>ARRIVALS ON <star/></srai></template>
+</category>
+<category>
+<pattern>ON * WHICH SHIPS DROP ANCHOR </pattern>
+<template><srai>ARRIVALS ON <star/></srai></template>
+</category>
+
+
+
+<!--No2. Departure on specific day and hour-->
+
+<category>
+<pattern>WHICH SHIP LEAVES ON * AT *</pattern>
+<template><srai>DEPARTURE ON <star index = "2"/> AT <star index = "1"/></srai></template>
+</category>
+<category>
+<pattern>WHICH SHIP DEPARTS ON * AT *</pattern>
+<template><srai>DEPARTURE ON <star index = "2"/> AT <star index = "1"/></srai></template>
+</category>
+<category>
+<pattern>WHICH SHIP DEPARTS AT * ON *</pattern>
+<template><srai>DEPARTURE ON <star index = "1"/> AT <star index = "2"/></srai></template>
+</category>
+<category>
+<pattern>WHICH SHIP LEAVES AT * ON *</pattern>
+<template><srai>DEPARTURE ON <star index = "1"/> AT <star index = "2"/></srai></template>
+</category>
+
+<!--No2. Arrival on specific day and hour-->
+
+<category>
+<pattern>WHICH SHIP ARRIVES ON * AT *</pattern>
+<template><srai>ARRIVAL ON <star index = "2"/> AT <star index = "1"/></srai></template>
+</category>
+<category>
+<pattern>WHICH SHIP DROPS ANCHOR ON * AT *</pattern>
+<template><srai>ARRIVAL ON <star index = "2"/> AT <star index = "1"/></srai></template>
+</category>
+<category>
+<pattern>WHICH SHIP ARRIVES AT * ON *</pattern>
+<template><srai>ARRIVAL ON <star index = "1"/> AT <star index = "2"/></srai></template>
+</category>
+<category>
+<pattern>WHICH SHIP DROPS ANCHOR AT * ON *</pattern>
+<template><srai>ARRIVAL ON <star index = "1"/> AT <star index = "2"/></srai></template>
+</category>
+
+<!--No3. Hour of departing ship-->
+
+<category>
+<pattern>WHEN DOES * LEAVE ON * </pattern>
+<template><srai>DEPARTURE OF <star index = "2"/> ON <star index = "1"/></srai></template>
+</category>
+<category>
+<pattern>WHEN DOES * DEPART ON * </pattern>
+<template><srai>DEPARTURE OF <star index = "2"/> ON <star index = "1"/></srai></template>
+</category>
+
+<!--No3. Hour of arriving ship-->
+
+<category>
+<pattern>WHEN DOES * ARRIVE ON * </pattern>
+<template><srai>ARRIVAL OF <star index = "2"/> ON <star index = "1"/></srai></template>
+</category>
+<category>
+<pattern>WHEN DOES * DROP ANCHOR ON * </pattern>
+<template><srai>ARRIVAL OF <star index = "2"/> ON <star index = "1"/></srai></template>
+</category>
+
+<!--No4. Destination of departing ship-->
+
+<category>
+<pattern>WHICH IS THE DESTINATION OF * ON * </pattern>
+<template><srai>DESTINATION OF <star index = "2"/> ON <star index = "1"/></srai></template>
+</category>
+<category>
+<pattern>WHERE DOES * DEPART ON * FOR </pattern>
+<template><srai>DESTINATION OF <star index = "2"/> ON <star index = "1"/></srai></template>
+</category>
+
+<!--No4. Starting point of departing ship-->
+
+<category>
+<pattern>WHICH IS THE STARTING POINT OF * ON * </pattern>
+<template><srai>STARTING POINT OF <star index = "2"/> ON <star index = "1"/></srai></template>
+</category>
+<category>
+<pattern>WHERE DOES * COME FROM ON * </pattern>
+<template><srai>STARTING POINT OF <star index = "2"/> ON <star index = "1"/></srai></template>
+</category>
+<category>
+<pattern>WHERE DOES * ARRIVE FROM ON * </pattern>
+<template><srai>STARTING POINT OF <star index = "2"/> ON <star index = "1"/></srai></template>
+</category>
+
+
+<!--No5. Ship which goes on destination-->
+
+<category>
+<pattern>WHICH SHIP DEPARTS ON * FOR * </pattern>
+<template><srai>DEPARTURE ON <star index = "2"/> FOR <star index = "1"/> </srai></template>
+</category>
+<category>
+<pattern>WHICH SHIP LEAVES ON * FOR * </pattern>
+<template><srai>DEPARTURE ON <star index = "2"/> FOR <star index = "1"/> </srai></template>
+</category>
+<category>
+<pattern>WHICH SHIP DEPARTS FOR * ON * </pattern>
+<template><srai>DEPARTURE ON <star index = "1"/> FOR <star index = "2"/> </srai></template>
+</category>
+<category>
+<pattern>WHICH SHIP LEAVES FOR * ON * </pattern>
+<template><srai>DEPARTURE ON <star index = "1"/> FOR <star index = "2"/> </srai></template>
+</category>
+
+<!--No5. Ship which leaves from port-->
+<category>
+<pattern>WHICH SHIP ARRIVES ON * FROM * </pattern>
+<template><srai>ARRIVAL ON <star index = "2"/> FROM <star index = "1"/> </srai></template>
+</category>
+<category>
+<pattern>WHICH SHIP COMES ON * FROM * </pattern>
+<template><srai>ARRIVAL ON <star index = "2"/> FROM <star index = "1"/> </srai></template>
+</category>
+<category>
+<pattern>WHICH SHIP DROPS ANCHOR ON * FROM * </pattern>
+<template><srai>ARRIVAL ON <star index = "2"/> FROM <star index = "1"/> </srai></template>
+</category>
+<category>
+<pattern>WHICH SHIP ARRIVES FROM * ON * </pattern>
+<template><srai>ARRIVAL ON <star index = "1"/> FROM <star index = "2"/> </srai></template>
+</category>
+<category>
+<pattern>WHICH SHIP COMES FROM * ON * </pattern>
+<template><srai>ARRIVAL ON <star index = "1"/> FROM <star index = "2"/> </srai></template>
+</category>
+<category>
+<pattern>WHICH SHIP DROPS ANCHOR FROM * ON * </pattern>
+<template><srai>ARRIVAL ON <star index = "1"/> FROM <star index = "2"/> </srai></template>
+</category>
+
+
+</aiml>

@@ -1,0 +1,239 @@
+<!--Το αρχείο αυτό περιέχει τους κωδικούς/αιτήματα που αποστέλλονται στο DialogSystem-->
+
+<aiml>
+
+<!--No1. Departures for each day-->
+<category>
+ <pattern>DEPARTURES ON *</pattern>
+ <template>
+  <think><set name = "day"><star/></set></think>
+  <condition name = "day">
+   <li value = "MONDAY">
+   XOX_DEP_MONDAY
+   </li>
+   <li value = "TUESDAY">
+   XOX_DEP_TUESDAY
+   </li>
+   <li value = "WEDNESDAY">
+   XOX_DEP_WEDNESDAY
+   </li>
+   <li value = "THURSDAY">
+   XOX_DEP_THURSDAY
+   </li>
+   <li value = "FRIDAY">
+   XOX_DEP_FRIDAY
+   </li>
+   <li value = "SATURDAY">
+   XOX_DEP_SATURDAY
+   </li>
+   <li value = "SUNDAY">
+   XOX_DEP_SUNDAY
+   </li>
+   <li>I'm sorry, I did not understand. Please tell me the day of which the departures you wish to know.</li>
+  </condition>
+ </template>
+</category>
+
+<!--Νο1. Arrivals for each day-->
+
+<category>
+ <pattern>ARRIVALS ON *</pattern>
+ <template>
+  <think><set name = "day"><star/></set></think>
+  <condition name = "day">
+    <li value = "MONDAY">
+   XOX_ARR_MONDAY
+   </li>
+   <li value = "TUESDAY">
+   XOX_ARR_TUESDAY
+   </li>
+   <li value = "WEDNESDAY">
+   XOX_ARR_WEDNESDAY
+   </li>
+   <li value = "THURSDAY">
+   XOX_ARR_THURSDAY
+   </li>
+   <li value = "FRIDAY">
+   XOX_ARR_FRIDAY
+   </li>
+   <li value = "SATURDAY">
+   XOX_ARR_SATURDAY
+   </li>
+   <li value = "SUNDAY">
+   XOX_ARR_SUNDAY
+   </li>
+   <li>I'm sorry, I did not understand. Please tell me the day of which the arrivals you wish to know.</li>
+  </condition>
+ </template>
+</category>
+
+<!--No2. Departure on specific day and hour-->
+<category>
+<pattern>DEPARTURE ON * AT * </pattern>
+ <template>
+  <think>
+  <set name = "day"><star index = "2"/></set>
+  <set name = "hour"><star index = "1"/>
+  </set></think>
+  <condition name = "day">
+   <li value = "MONDAY">XOX_DS_MONDAY_<get name = "hour"/></li>
+   <li value = "TUESDAY">XOX_DS_TUESDAY_<get name = "hour"/></li>
+   <li value = "WEDNESDAY">XOX_DS_WEDNESDAY_<get name = "hour"/></li>
+   <li value = "THURSDAY">XOX_DS_THURSDAY_<get name = "hour"/></li>
+   <li value = "FRIDAY">XOX_DS_FRIDAY_<get name = "hour"/></li>
+   <li value = "SATURDAY">XOX_DS_SATURDAY_<get name = "hour"/></li>
+   <li value = "SUNDAY">XOX_DS_SUNDAY_<get name = "hour"/></li>
+   <li>I'm sorry, I did not understand. Please specify the day of departure.</li>
+  </condition>
+ </template>
+</category>
+
+<!--No2. Arrival on specific day and hour-->
+<category>
+<pattern>ARRIVAL ON * AT * </pattern>
+ <template>
+  <think>
+  <set name = "day"><star index = "2"/></set>
+  <set name = "hour"><star index = "1"/>
+  </set></think>
+  <condition name = "day">
+   <li value = "MONDAY">XOX_AS_MONDAY_<get name = "hour"/></li>
+   <li value = "TUESDAY">XOX_AS_TUESDAY_<get name = "hour"/></li>
+   <li value = "WEDNESDAY">XOX_AS_WEDNESDAY_<get name = "hour"/></li>
+   <li value = "THURSDAY">XOX_AS_THURSDAY_<get name = "hour"/></li>
+   <li value = "FRIDAY">XOX_AS_FRIDAY_<get name = "hour"/></li>
+   <li value = "SATURDAY">XOX_AS_SATURDAY_<get name = "hour"/></li>
+   <li value = "SUNDAY">XOX_AS_SUNDAY_<get name = "hour"/></li>
+   <li>I'm sorry, I did not understand. Please specify the day of arrival.</li>
+  </condition>
+ </template>
+</category>
+
+<!--No3. Hour of departing ship-->
+<category>
+<pattern>DEPARTURE OF * ON * </pattern>
+<template>
+ <think>
+  <set name = "day"><star index = "1"/></set>
+  <set name = "ship"><star index = "2"/></set>
+ </think>
+ <condition name = "day">
+   <li value = "MONDAY">XOX_DH_MONDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "TUESDAY">XOX_DH_TUESDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "WEDNESDAY">XOX_DH_WEDNESDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "THURSDAY">XOX_DH_THURSDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "FRIDAY">XOX_DH_FRIDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "SATURDAY">XOX_DH_SATURDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "SUNDAY">XOX_DH_SUNDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li>I'm sorry, I did not understand. Please specify the day of departure.</li>
+ </condition>
+</template>
+</category>
+
+<!--No3. Hour of arriving ship-->
+<category>
+<pattern>ARRIVAL OF * ON * </pattern>
+<template>
+ <think>
+  <set name = "day"><star index = "1"/></set>
+  <set name = "ship"><star index = "2"/></set>
+ </think>
+ <condition name = "day">
+   <li value = "MONDAY">XOX_AH_MONDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "TUESDAY">XOX_AH_TUESDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "WEDNESDAY">XOX_AH_WEDNESDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "THURSDAY">XOX_AH_THURSDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "FRIDAY">XOX_AH_FRIDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "SATURDAY">XOX_AH_SATURDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "SUNDAY">XOX_AH_SUNDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li>I'm sorry, I did not understand. Please specify the day of arrival.</li>
+ </condition>
+</template>
+</category>
+
+<!---No4. Destination of ship-->
+<category>
+<pattern>DESTINATION OF * ON * </pattern>
+<template>
+ <think>
+  <set name = "day"><star index = "1"/></set>
+  <set name = "ship"><star index = "2"/></set>
+ </think>
+ <condition name = "day">
+   <li value = "MONDAY">XOX_DD_MONDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "TUESDAY">XOX_DD_TUESDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "WEDNESDAY">XOX_DD_WEDNESDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "THURSDAY">XOX_DD_THURSDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "FRIDAY">XOX_DD_FRIDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "SATURDAY">XOX_DD_SATURDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "SUNDAY">XOX_DD_SUNDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li>I'm sorry, I did not understand. Please specify the day of departure.</li>
+ </condition>
+</template>
+</category>
+
+<!---No4. Starting point of ship-->
+<category>
+<pattern>STARTING POINT OF * ON * </pattern>
+<template>
+ <think>
+  <set name = "day"><star index = "1"/></set>
+  <set name = "ship"><star index = "2"/></set>
+ </think>
+ <condition name = "day">
+   <li value = "MONDAY">XOX_AD_MONDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "TUESDAY">XOX_AD_TUESDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "WEDNESDAY">XOX_AD_WEDNESDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "THURSDAY">XOX_AD_THURSDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "FRIDAY">XOX_AD_FRIDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "SATURDAY">XOX_AD_SATURDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li value = "SUNDAY">XOX_AD_SUNDAY_<uppercase><get name = "ship"/></uppercase></li>
+   <li>I'm sorry, I did not understand. Please specify the day of arrival.</li>
+ </condition>
+</template>
+</category>
+
+<!---No5. Ship which goes on destination-->
+<category>
+<pattern>DEPARTURE ON * FOR * </pattern>
+<template>
+ <think>
+  <set name = "day"><star index = "2"/></set>
+  <set name = "dest"><star index = "1"/></set>
+ </think>
+ <condition name = "day">
+   <li value = "MONDAY">XOX_DW_MONDAY_<uppercase><get name = "dest"/></uppercase></li>
+   <li value = "TUESDAY">XOX_DW_TUESDAY_<uppercase><get name = "dest"/></uppercase></li>
+   <li value = "WEDNESDAY">XOX_DW_WEDNESDAY_<uppercase><get name = "dest"/></uppercase></li>
+   <li value = "THURSDAY">XOX_DW_THURSDAY_<uppercase><get name = "dest"/></uppercase></li>
+   <li value = "FRIDAY">XOX_DW_FRIDAY_<uppercase><get name = "dest"/></uppercase></li>
+   <li value = "SATURDAY">XOX_DW_SATURDAY_<uppercase><get name = "dest"/></uppercase></li>
+   <li value = "SUNDAY">XOX_DW_SUNDAY_<uppercase><get name = "dest"/></uppercase></li>
+   <li>I'm sorry, I did not understand. Please specify the day of departure.</li>
+ </condition>
+</template>
+</category>
+
+<!--No5. Ship which leaves from port-->
+<category>
+<pattern>ARRIVAL ON * FROM * </pattern>
+<template>
+ <think>
+  <set name = "day"><star index = "2"/></set>
+  <set name = "dest"><star index = "1"/></set>
+ </think>
+ <condition name = "day">
+   <li value = "MONDAY">XOX_AW_MONDAY_<uppercase><get name = "dest"/></uppercase></li>
+   <li value = "TUESDAY">XOX_AW_TUESDAY_<uppercase><get name = "dest"/></uppercase></li>
+   <li value = "WEDNESDAY">XOX_AW_WEDNESDAY_<uppercase><get name = "dest"/></uppercase></li>
+   <li value = "THURSDAY">XOX_AW_THURSDAY_<uppercase><get name = "dest"/></uppercase></li>
+   <li value = "FRIDAY">XOX_AW_FRIDAY_<uppercase><get name = "dest"/></uppercase></li>
+   <li value = "SATURDAY">XOX_AW_SATURDAY_<uppercase><get name = "dest"/></uppercase></li>
+   <li value = "SUNDAY">XOX_AW_SUNDAY_<uppercase><get name = "dest"/></uppercase></li>
+   <li>I'm sorry, I did not understand. Please specify the day of arrival.</li>
+ </condition>
+</template>
+</category>
+
+
+</aiml>
